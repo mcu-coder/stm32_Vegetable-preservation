@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>OTA使用教程</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=' first-line-indent'><h1 id='stm32f103c8x-ota使用教程'><span>STM32F103C8x OTA使用教程</span></h1><figure><table><thead><tr><th><span>版本</span></th><th><span>修订内容</span></th><th><span>修订人</span></th><th><span>修订日期</span></th></tr></thead><tbody><tr><td><span>OTA-V1.0</span></td><td><span>起稿</span></td><td><span>吴楚源</span></td><td><span>2023/02/03</span></td></tr></tbody></table></figure><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#stm32f103c8x-ota使用教程">STM32F103C8x OTA使用教程</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n14"><a class="md-toc-inner" href="#ota设计流程">OTA设计流程</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n16"><a class="md-toc-inner" href="#简述-stm32-启动"><strong>简述</strong> <strong>STM32</strong> <strong>启动</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n24"><a class="md-toc-inner" href="#flash区间划分">Flash区间划分</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n37"><a class="md-toc-inner" href="#ota方案">OTA方案</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n62"><a class="md-toc-inner" href="#bootloader程序流程">Bootloader程序流程</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n65"><a class="md-toc-inner" href="#app接收程序流程"><strong>APP接收程序流程</strong></a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n68"><a class="md-toc-inner" href="#ota的使用方法">OTA的使用方法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n69"><a class="md-toc-inner" href="#烧录bootloader-固件">烧录Bootloader 固件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n82"><a class="md-toc-inner" href="#烧录app固件">烧录APP固件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n102"><a class="md-toc-inner" href="#云端操作">云端操作</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n127"><a class="md-toc-inner" href="#自定义flash-ota">自定义Flash OTA</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n142"><a class="md-toc-inner" href="#keil-生成-bin-文件">Keil 生成 bin 文件</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n155"><a class="md-toc-inner" href="#合并-hex">合并 hex</a></span></p></div><h2 id='ota设计流程'><span>OTA设计流程</span></h2><p><span>该小节是向用户介绍程序中OTA的设计思路以及实现方法，用户简单了解即可，程序中已将OTA程序实现。如需快速使用，可直接跳转到下个小节：</span><a href='#OTA'><strong><span>OTA的使用方法</span></strong></a><span>。</span></p><h3 id='简述-stm32-启动'><strong><span>简述</span></strong><span> </span><strong><span>STM32</span></strong><span> </span><strong><span>启动</span></strong></h3><p><span>ARM7/ARM9 内核的控制器在复位后，CPU 会从存储空间的绝对地址 0x000000 取出第一条指令执行复位中断服务程序的方式启动，即固定了复位后的起始地址为 0x000000（PC = 0x000000）同时中断向量表的位置并不是固定的。然而，Cortex-M3 内核启动有 3 种情况：</span></p><p><span>1、 通过 boot 引脚设置可以将中断向量表定位于 SRAM 区，即起始地址为 0x2000000，同时复位后 PC 指针位于 0x2000000 处；</span></p><p><span>2、 通过 boot 引脚设置可以将中断向量表定位于 Flash 区，即起始地址为 0x8000000，同时复位后 PC 指针位于 0x8000000 处；</span></p><p><span>3、 通过 boot 引脚设置可以将中断向量表定位于内置 Bootloader 区；</span></p><p><span>Cortex-M3 内核规定，起始地址必须存放堆顶指针，而第二个地址则必须存放复位中断入口向量地址，这样在 Cortex-M3 内核复位后，会自动从起始地址的下一个 32 位空间取出复位中断入口向量，跳转执行复位中断服务程序。对比 ARM7/ARM9 内核，Cortex-M3 内核则是固定了中断向量表的位置而起始地址是可变化的。</span></p><p><span>总结一下 STM32 的启动文件和启动过程。首先对栈和堆的大小进行定义，并在代码区的起始处建立中断向量表，其第一个表项是栈顶地址，第二个表项是复位中断服务入口地址。然后在复位中断服务程序中跳转 C/C++标准实时库的 main 函数，完成用户堆栈等的初始化后，跳转.c 文件中的 main 函数开始执行 C 程序。假设 STM32 被设置为从内部 Flash 启动（这也是最常见的一种情况），中断向量表起始地位为 0x8000000，则栈顶地址存放于 0x8000000处，而复位中断服务入口地址存放于 0x8000004 处。当 STM32 遇到复位信号后，则从0x80000004 处取出复位中断服务入口地址，继而执行复位中断服务程序，然后跳转 main 函数，最后进入 mian 函数。</span></p><p><span>分析下 GOKIT_OTA 需求，我们将建立两个工程，分别是 Bootloader 还有 APP，我们将Bootloader 下载到 Flash 空间 0x8000000 地址处，那么 STM32 启动后会首先执行我们的Bootloader 程序，然后就可以按照我们意愿实现 OTA 了。</span></p><h3 id='flash区间划分'><span id="click_me_jump"><span>Flash区间划分</span></span></h3><p><span>根据需求，我们将 STM32F103C8T6 这个芯片Flash 空间划分出 4 个区域：Bootloader、FLAG、APP、APPBAK。四个区间作用描述如下：</span></p><ul><li><p><span>Bootloader:存储 Bootloader 固件，MCU 上电后首先运行该固件；</span></p></li><li><p><span>FLAG:存储有关升级的相关标志位，Bootloader 和 APP 都需要操作该区域；</span></p></li><li><p><span>APP：存储用户程序固件；</span></p></li><li><p><span>APPBAK:临时存储云端下发的新固件，升级固件的一个过渡存储区；</span></p><p><span>因为STM32F103C8T6 只有Flash 只有64K大小，所以分区方案如下图所示：</span></p></li></ul><p><img src="image/OTA使用教程/1675419271491.png" referrerpolicy="no-referrer" alt="1675419271491"></p><h3 id='ota方案'><span>OTA方案</span></h3><p><strong><span>无升级任务时的执行流程：</span></strong></p><ol start='' ><li><span>上电进入 Bootloader 区域运行,检测 FLAG 区域标识是否需要进行升级，若无升级任务，则运行 2；</span></li><li><span>跳转到 APP 区域运行应用程序；</span></li></ol><p><strong><span>有升级任务时的执行流程：</span></strong></p><ol start='' ><li><span>APP 区域运行应用程序时接收到模组升级命令，接收固件分片数据，写数据到APP_BAK 区域，接收完成，执行 2；</span></li><li><span>FLAG 区域写入升级标识，并写入 MD5 加密数据，执行 3；</span></li><li><span>MCU 重启，开始执行 4；</span></li><li><span>进入 Bootloader 区域运行，检测到 FLAG 区域有升级任务，读出 APP_BAK 区域数据，验证固件有效性，若固件有效，执行 5；</span></li><li><span>读出 APP_BAK 区域数据，写入 APP 区域，检验新固件 MD5，若校验成功则执行6，若校验失败，则 MCU 重启；</span></li><li><span>擦除 FLAG 区域有效升级标志，执行 7；</span></li><li><span>MCU 重启，进入 Bootloader 区域,未检测到升级任务，执行 8；</span></li><li><span>执行新固件，OTA 完成；</span></li></ol><h3 id='bootloader程序流程'><span>Bootloader程序流程</span></h3><p><span>Bootloader 的主要职能是在有升级任务的时候将 APPBAK 里面的固件拷贝到 APP 区域。当然，这期间需要做很多的工作，比如升级失败的容错等等。具体的流程可以参考图示。需要注意的是，</span><strong><span>在校验 MD5 正确后开始搬运固件数据期间，MCU 出现故障（包括突然断电），MCU 应发生复位操作（FLAG 区域数据未破坏），复位后重新开始执行 Bootloader，从而避免 MCU 刷成板砖</span></strong><span>。</span></p><p><img src="image/OTA使用教程/1675419293849.png" referrerpolicy="no-referrer" alt="1675419293849"></p><h3 id='app接收程序流程'><strong><span>APP接收程序流程</span></strong></h3><p><span>APP 固件的编写要注意硬件版本号和软件版本号，软件版号是作为升级迭代很重要的标志。需要注意的是，中断向量地址偏移的定义，这个地方需要我们尤其注意，STM32 标准库默认中断向量地址偏移为 0x0,但是我们 APP 实际的偏移是 0x3000。如果不修改，APP 也可以正常加载运行，但是不会响应中断。所以，我们需要根据实际 APP 下载的起始地址，对中断向量地址偏移做定义。实现OTA数据接收的整个流程，具体如下：</span></p><p><img src="image/OTA使用教程/1675419312262.png" referrerpolicy="no-referrer" alt="1675419312262"></p><h2 id='ota的使用方法'><span id="OTA"><span>OTA的使用方法</span></span></h2><h3 id='烧录bootloader-固件'><span>烧录Bootloader 固件</span></h3><p><span>在该文档的同级目录下，有Bootloader 文件夹，该文件夹中的即是Bootloader 程序，用户使用Keil5打开程序，需要对工程做相应配置，需注意的是，OTA设计之初Bootloader 大小规划为11KB，所以Bootloader 固件大小不能超过最大可允许的 11KB。Keil 编译器需要设置如下：</span></p><ol start='' ><li><p><span>按照 Flash 分区方案，设置 Flash 固件下载地址。</span></p><p><img src="image/OTA使用教程/1675419625386.png" referrerpolicy="no-referrer" alt="1675419625386"></p></li><li><p><span>Flash 烧写地址设置生效。</span></p><p><img src="image/OTA使用教程/1675419636691.png" referrerpolicy="no-referrer" alt="1675419636691"></p></li><li><p><span>Jlink 下载按块擦除 Flash 区间。</span></p></li></ol><p><img src="image/OTA使用教程/1675419646289.png" referrerpolicy="no-referrer" alt="1675419646289"></p><p><span>以上配置完成之后即可编译烧录固件。</span></p><h3 id='烧录app固件'><span>烧录APP固件</span></h3><p><span>APP固件默认是屏蔽OTA功能的，如用户需要OTA功能，在烧录Bootloader固件之后需对APP固件做以下操作。</span></p><ol start='' ><li><p><span>打开OTA使能宏。</span></p><p><img src="image/OTA使用教程/1675419654602.png" referrerpolicy="no-referrer" alt="1675419654602"></p></li><li><p><span>根据需求更改中断向量表的偏移地址，若</span><a href='#click_me_jump'><span>Flash 区间划分</span></a><span>与本文档介绍的一样，则这一步直接跳过，不用改动。在关闭OTA使能宏时，中断向量表的偏移地址为0，开启OTA使能宏之后，中断向量表的偏移地址为0x3000（因为11K用于Bootloader，1K用于FLAG，所以中断向量表的偏移值为12KB*1024=0x3000）,若是APP固件太大，C8T6芯片的Flash不足以支持用户做OTA，那么用户可以选择外接Flash芯片，或者使用Flash 更大的芯片来实现OTA。</span></p><p><img src="image/OTA使用教程/1675419662278.png" referrerpolicy="no-referrer" alt="1675419662278"></p></li><li><p><span>按照Flash分区方案，设置Flash固件下载地址。</span></p><p><img src="image/OTA使用教程/1675419668347.png" referrerpolicy="no-referrer" alt="1675419668347"></p></li><li><p><span>Flash烧写地址设置生效。</span></p><p><img src="image/OTA使用教程/1675419673884.png" referrerpolicy="no-referrer" alt="1675419673884"></p></li><li><p><span>Jlink下载按块擦除 Flash 区间。</span></p></li></ol><p><img src="image/OTA使用教程/1675419679189.png" referrerpolicy="no-referrer" alt="1675419679189"></p><p><span>完成以上设置即可编译烧录APP固件，烧录完成之后此时通过日志可以发现，上电之后时候进入Bootloader，随后会在Bootloader中判断APP区固件是否正常，正常则跳转到APP区运行固件。</span></p><p><img src="image/OTA使用教程/1675419695417.png" referrerpolicy="no-referrer" alt="1675419695417"></p><h3 id='云端操作'><span>云端操作</span></h3><p><span>在Bootloader固件和APP固件都烧录完成并成功运行之后，用户需让模组配网并使之连接云端后，才能在云端进行OTA操作，需要注意的是，</span><strong><span>进行OTA的新固件的软件版本号必须比旧固件的软件版本号高</span></strong><span>，例如旧固件的软件版本号为：03030000，则新固件的软件版本号为：03030001或更高。</span></p><p><img src="image/OTA使用教程/1675419705563.png" referrerpolicy="no-referrer" alt="1675419705563"></p><p><span>云端具体操作如下：</span></p><ol start='' ><li><p><span>进入相应的云端产品，按下图操作进入OTA操作界面。</span></p><p><img src="image/OTA使用教程/1675419713567.png" referrerpolicy="no-referrer" alt="1675419713567"></p></li><li><p><span>在OTA设置界面里设置好参数之后，就可以生成固件包了。bin文件在文档同目录下的Output文件夹中（该目录需编译APP后才会生成）。</span></p><p><img src="image/OTA使用教程/1675419721201.png" referrerpolicy="no-referrer" alt="1675419721201"></p></li><li><p><span>生成固件包之后确认没问题点击验证固件包，随后设置要OTA的模组MAC，MAC可以在设备管理中查看。</span></p><p><img src="image/OTA使用教程/1675419727406.png" referrerpolicy="no-referrer" alt="1675419727406"></p><p><img src="image/OTA使用教程/1675419733154.png" referrerpolicy="no-referrer" alt="1675419733154"></p></li><li><p><span>确认MAC地址之后，点击下一步，即可开始OTA。</span></p><p><img src="image/OTA使用教程/1675419742430.png" referrerpolicy="no-referrer" alt="1675419742430"></p></li><li><p><span>此时观察STM32日志可发现正在执行OTA操作。</span></p></li></ol><p><img src="image/OTA使用教程/1675419750027.png" referrerpolicy="no-referrer" alt="1675419750027"></p><p><img src="image/OTA使用教程/1675419759082.png" referrerpolicy="no-referrer" alt="1675419759082"></p><p><span>此刻云端OTA界面让用户确认固件是否没问题，正确则点击确定。</span></p><p><img src="image/OTA使用教程/1675419767334.png" referrerpolicy="no-referrer" alt="1675419767334"></p><p><span>至此，成功完成OTA！</span></p><h2 id='自定义flash-ota'><span>自定义Flash OTA</span></h2><p><span>当用户使用Flash较大的芯片，且APP固件超多26KB时，可自定义Flash区间划分，划分后需修改固件，具体操作如下：</span></p><ol start='' ><li><p><span>若用户使用自己编写的Bootloader，则烧录Bootloader时，需要在编译器修改Flash空间，修改大小为用户自己划分的区间。</span></p><p><img src="image/OTA使用教程/1675419774687.png" referrerpolicy="no-referrer" alt="1675419774687"></p></li><li><p><span>修改APP固件中对各个分区的Flash地址宏定义，修改大小为用户自己划分的区间。</span></p><p><img src="image/OTA使用教程/1675419781724.png" referrerpolicy="no-referrer" alt="1675419781724"></p></li><li><p><span>修改中断向量表地址偏移量，修改大小为用户自己划分的区间。</span></p><p><img src="image/OTA使用教程/1675419788938.png" referrerpolicy="no-referrer" alt="1675419788938"></p></li><li><p><span>烧录APP固件时，需要在编译器修改Flash烧写首地址和Flash烧写空间，修改大小为用户自己划分的区间</span></p></li></ol><p><img src="image/OTA使用教程/1675419794756.png" referrerpolicy="no-referrer" alt="1675419794756"></p><h2 id='keil-生成-bin-文件'><span>Keil 生成 bin 文件</span></h2><p><span>本方案只测试了 bin 文件的远程升级,hex 文件未作研究，所以我们需要通过 Keil 将我们的固件编译生成 bin 文件。Keil 自带了工具软件 fromelf.exe，只要进行适当配置便可以输出bin 文件了，至于 fromelf 工具语法在此不在赘述，可参考链接：</span><a href='http://forum.eepw.com.cn/thread/225710/1/' target='_blank' class='url'>http://forum.eepw.com.cn/thread/225710/1/</a></p><p><span>下面以 Gokit 微信宠物屋工程为例，编译后能生成.bin 格式的文件：</span></p><ol start='' ><li><p><span>选择 User 标签页，并进行如下图一样的配置：</span></p><p><img src="image/OTA使用教程/1675419803574.png" referrerpolicy="no-referrer" alt="1675419803574"></p></li><li><p><span>根据 User 页的配置还要配置 Output 页面，具体如下：</span></p><p><img src="image/OTA使用教程/1675419811228.png" referrerpolicy="no-referrer" alt="1675419811228"></p></li><li><p><span>点击 OK 确定，然后再重新编译则会按照上图中的配置路径生成.bin 格式的文件了：</span></p></li></ol><p><img src="image/OTA使用教程/1675419820264.png" referrerpolicy="no-referrer" alt="1675419820264"></p><h2 id='合并-hex'><span>合并 hex</span></h2><p><span>本方案会编译生成两个 hex 文件，但是为方便用户下载，在此提供 hex 合并的操作，按照如下操作，我们可以将 bootloader 和 app 两个固件合并成一个固件，注意是 hex 格式文件，这样，用户只需要一个下载一个 hex 文件，即可实现带有远程 OTA 功能的微信宠物工程实现。</span></p><ol start='' ><li><p><span>准备好需要合并的 hex 文件，如下：</span></p><p><img src="image/OTA使用教程/1675419831231.png" referrerpolicy="no-referrer" alt="1675419831231"></p></li><li><p><span>开启 JFlash-ARM 工具. 打开第一个文件，顺序无所谓，因为 hex 文件自带地址信息，如下：</span></p><p><img src="image/OTA使用教程/1675419839863.png" referrerpolicy="no-referrer" alt="1675419839863"></p></li><li><p><span>点击 File 菜单, 选择 Merge data File，如下：</span></p><p><img src="image/OTA使用教程/1675419847665.png" referrerpolicy="no-referrer" alt="1675419847665"></p></li><li><p><span>保存合并后的 hex 文件，如下：</span></p><p><img src="image/OTA使用教程/1675419855331.png" referrerpolicy="no-referrer" alt="1675419855331"></p></li><li><p><span>生成目标文件，可以用 STMicroelectronics flash loader 下载</span></p><p><img src="image/OTA使用教程/1675419862494.png" referrerpolicy="no-referrer" alt="1675419862494"></p></li></ol></div></div>
+</body>
+</html>
